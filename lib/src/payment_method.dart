@@ -8,7 +8,12 @@ class PaymentMethodRequest {
   final Token token;
   final Map<String, String> metadata;
 
-  PaymentMethodRequest({this.billingAddress, this.card, this.token, this.metadata}) {
+  PaymentMethodRequest({
+    this.billingAddress,
+    this.card,
+    this.token,
+    this.metadata,
+  }) {
     assert(card != null || token != null);
   }
 
@@ -30,6 +35,53 @@ class PaymentMethodRequest {
   }
 }
 
+class BECSInfo {
+  final String name;
+  final String email;
+  final String accountNumber;
+  final String bsbNumber;
+
+  BECSInfo({
+    this.name,
+    this.email,
+    this.accountNumber,
+    this.bsbNumber,
+  });
+
+  Map<String, Object> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.name != null) {
+      data['name'] = this.name;
+    }
+    if (this.email != null) {
+      data['email'] = this.email;
+    }
+    if (this.accountNumber != null) {
+      data['accountNumber'] = this.accountNumber;
+    }
+    if (this.bsbNumber != null) {
+      data['bsbNumber'] = this.bsbNumber;
+    }
+    return data;
+  }
+}
+
+class PaymentMethodRequestBECS {
+  final BECSInfo becsInfo;
+
+  PaymentMethodRequestBECS({
+    this.becsInfo,
+  });
+
+  Map<String, Object> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.becsInfo != null) {
+      data['BECSInfo'] = this.becsInfo.toJson();
+    }
+    return data;
+  }
+}
+
 class PaymentMethod {
   BillingDetails billingDetails;
   CreditCard card;
@@ -39,11 +91,20 @@ class PaymentMethod {
   bool livemode;
   String type;
 
-  PaymentMethod({this.billingDetails, this.card, this.created, this.customerId, this.id, this.livemode, this.type});
+  PaymentMethod(
+      {this.billingDetails,
+      this.card,
+      this.created,
+      this.customerId,
+      this.id,
+      this.livemode,
+      this.type});
 
   factory PaymentMethod.fromJson(Map<dynamic, dynamic> json) {
     return PaymentMethod(
-      billingDetails: json['billingDetails'] != null ? BillingDetails.fromJson(json['billingDetails']) : null,
+      billingDetails: json['billingDetails'] != null
+          ? BillingDetails.fromJson(json['billingDetails'])
+          : null,
       card: json['card'] != null ? CreditCard.fromJson(json['card']) : null,
       created: json['created'],
       customerId: json['customerId'],
@@ -55,7 +116,8 @@ class PaymentMethod {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.created != null) if (this.created != null) data['created'] = this.created;
+    if (this.created != null) if (this.created != null)
+      data['created'] = this.created;
     if (this.customerId != null) data['customerId'] = this.customerId;
     if (this.id != null) data['id'] = this.id;
     if (this.livemode != null) data['livemode'] = this.livemode;
@@ -80,7 +142,9 @@ class BillingDetails {
 
   factory BillingDetails.fromJson(Map<dynamic, dynamic> json) {
     return BillingDetails(
-      address: json['address'] != null ? BillingAddress.fromJson(json['address']) : null,
+      address: json['address'] != null
+          ? BillingAddress.fromJson(json['address'])
+          : null,
       email: json['email'],
       name: json['name'],
       phone: json['phone'],

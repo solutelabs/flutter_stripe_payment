@@ -19,7 +19,8 @@ class StripePayment {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/usage.html
   static void setOptions(StripeOptions settings) {
-    _channel.invokeMethod('setOptions', {"options": settings.toJson(), "errorCodes": Errors.mapping});
+    _channel.invokeMethod('setOptions',
+        {"options": settings.toJson(), "errorCodes": Errors.mapping});
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/usage.html
@@ -57,13 +58,16 @@ class StripePayment {
     }
   }
 
-  static Future<bool> _deviceSupportsAndroidPay() => _channel.invokeMethod("deviceSupportsAndroidPay");
+  static Future<bool> _deviceSupportsAndroidPay() =>
+      _channel.invokeMethod("deviceSupportsAndroidPay");
 
-  static Future<bool> _deviceSupportsApplePay() => _channel.invokeMethod("deviceSupportsApplePay");
+  static Future<bool> _deviceSupportsApplePay() =>
+      _channel.invokeMethod("deviceSupportsApplePay");
 
   /// https://tipsi.github.io/tipsi-stripe/docs/paymentRequestWithNativePay.html
   static Future<Token> paymentRequestWithNativePay(
-      {@required AndroidPayPaymentRequest androidPayOptions, @required ApplePayPaymentOptions applePayOptions}) {
+      {@required AndroidPayPaymentRequest androidPayOptions,
+      @required ApplePayPaymentOptions applePayOptions}) {
     if (kIsWeb) {
       throw UnimplementedError();
     } else {
@@ -76,14 +80,19 @@ class StripePayment {
     }
   }
 
-  static Future<Token> _paymentRequestWithAndroidPay(AndroidPayPaymentRequest options) async {
-    final token = await _channel.invokeMethod("paymentRequestWithAndroidPay", options.toJson());
+  static Future<Token> _paymentRequestWithAndroidPay(
+      AndroidPayPaymentRequest options) async {
+    final token = await _channel.invokeMethod(
+        "paymentRequestWithAndroidPay", options.toJson());
     return Token.fromJson(token);
   }
 
-  static Future<Token> _paymentRequestWithApplePay(ApplePayPaymentOptions options) async {
-    final token = await _channel.invokeMethod("paymentRequestWithApplePay",
-        {"options": options.json, "items": options.items.map((item) => item.json).toList()});
+  static Future<Token> _paymentRequestWithApplePay(
+      ApplePayPaymentOptions options) async {
+    final token = await _channel.invokeMethod("paymentRequestWithApplePay", {
+      "options": options.json,
+      "items": options.items.map((item) => item.json).toList()
+    });
     return Token.fromJson(token);
   }
 
@@ -116,62 +125,85 @@ class StripePayment {
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/paymentRequestWithCardForm.html
-  static Future<PaymentMethod> paymentRequestWithCardForm(CardFormPaymentRequest options) async {
-    final token = await _channel.invokeMethod("paymentRequestWithCardForm", options.toJson());
+  static Future<PaymentMethod> paymentRequestWithCardForm(
+      CardFormPaymentRequest options) async {
+    final token = await _channel.invokeMethod(
+        "paymentRequestWithCardForm", options.toJson());
     return PaymentMethod.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createTokenWithCard.html
   static Future<Token> createTokenWithCard(CreditCard card) async {
-    final token = await _channel.invokeMethod("createTokenWithCard", card.toJson());
+    final token =
+        await _channel.invokeMethod("createTokenWithCard", card.toJson());
     return Token.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createTokenWithBankAccount.html
   static Future<Token> createTokenWithBankAccount(BankAccount options) async {
-    final token = await _channel.invokeMethod("createTokenWithBankAccount", options.toJson());
+    final token = await _channel.invokeMethod(
+        "createTokenWithBankAccount", options.toJson());
     return Token.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createsourcewithparamsparams.html
   static Future<Source> createSourceWithParams(SourceParams options) async {
-    final source = await _channel.invokeMethod("createSourceWithParams", options.toJson());
+    final source =
+        await _channel.invokeMethod("createSourceWithParams", options.toJson());
     return Source.fromJson(source);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createPaymentMethod.html
-  static Future<PaymentMethod> createPaymentMethod(PaymentMethodRequest request) async {
-    final paymentMethod = await _channel.invokeMethod("createPaymentMethod", request.toJson());
+  static Future<PaymentMethod> createPaymentMethod(
+      PaymentMethodRequest request) async {
+    final paymentMethod =
+        await _channel.invokeMethod("createPaymentMethod", request.toJson());
     return PaymentMethod.fromJson(paymentMethod);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
-  static Future<PaymentIntentResult> authenticatePaymentIntent({@required String clientSecret}) async {
+  static Future<PaymentIntentResult> authenticatePaymentIntent(
+      {@required String clientSecret}) async {
     assert(clientSecret != null);
-    final result = await _channel.invokeMethod('authenticatePaymentIntent', {"clientSecret": clientSecret});
+    final result = await _channel.invokeMethod(
+        'authenticatePaymentIntent', {"clientSecret": clientSecret});
     return PaymentIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/confirmPaymentIntent.html
-  static Future<PaymentIntentResult> confirmPaymentIntent(PaymentIntent intent) async {
+  static Future<PaymentIntentResult> confirmPaymentIntent(
+      PaymentIntent intent) async {
     assert(intent.clientSecret != null);
     assert(intent.paymentMethodId != null);
-    final result = await _channel.invokeMethod('confirmPaymentIntent', intent.toJson());
+    final result =
+        await _channel.invokeMethod('confirmPaymentIntent', intent.toJson());
     return PaymentIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticateSetupIntent.html
-  static Future<SetupIntentResult> authenticateSetupIntent({@required String clientSecret}) async {
+  static Future<SetupIntentResult> authenticateSetupIntent(
+      {@required String clientSecret}) async {
     assert(clientSecret != null);
-    final result = await _channel.invokeMethod('authenticateSetupIntent', {"clientSecret": clientSecret});
+    final result = await _channel.invokeMethod(
+        'authenticateSetupIntent', {"clientSecret": clientSecret});
     return SetupIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/confirmSetupIntent.html
-  static Future<SetupIntentResult> confirmSetupIntent(PaymentIntent intent) async {
+  static Future<SetupIntentResult> confirmSetupIntent(
+      PaymentIntent intent) async {
     assert(intent.clientSecret != null);
     assert(intent.paymentMethodId != null);
-    final result = await _channel.invokeMethod('confirmSetupIntent', intent.toJson());
+    final result =
+        await _channel.invokeMethod('confirmSetupIntent', intent.toJson());
+    return SetupIntentResult.fromJson(result);
+  }
+
+  static Future<SetupIntentResult> confirmBECSSetupIntent(
+      PaymentIntentBECS intent) async {
+    assert(intent.clientSecret != null);
+    final result =
+        await _channel.invokeMethod('confirmBECSSetupIntent', intent.toJson());
     return SetupIntentResult.fromJson(result);
   }
 }
@@ -181,18 +213,23 @@ class StripeOptions {
   final String merchantId;
   final String androidPayMode;
 
-  StripeOptions({@required this.publishableKey, this.merchantId, this.androidPayMode});
+  StripeOptions(
+      {@required this.publishableKey, this.merchantId, this.androidPayMode});
 
   factory StripeOptions.fromJson(Map<String, dynamic> json) {
     return StripeOptions(
-        merchantId: json['merchantId'], publishableKey: json['publishableKey'], androidPayMode: json['androidPayMode']);
+        merchantId: json['merchantId'],
+        publishableKey: json['publishableKey'],
+        androidPayMode: json['androidPayMode']);
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.merchantId != null) data['merchantId'] = this.merchantId;
-    if (this.publishableKey != null) data['publishableKey'] = this.publishableKey;
-    if (this.androidPayMode != null) data['androidPayMode'] = this.androidPayMode;
+    if (this.publishableKey != null)
+      data['publishableKey'] = this.publishableKey;
+    if (this.androidPayMode != null)
+      data['androidPayMode'] = this.androidPayMode;
     return data;
   }
 }

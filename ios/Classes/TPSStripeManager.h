@@ -60,6 +60,10 @@ typedef void (^RCTPromiseRejectBlock)(NSString *code, NSString *message, NSError
                  resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTPromiseRejectBlock)reject;
 
+-(void)confirmBECSSetupIntent:(NSDictionary<NSString*, id> *)untypedParams
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject;
+
 -(void)authenticateSetupIntent:(NSDictionary<NSString*, id>*)params
                       resolver:(RCTPromiseResolveBlock)resolve
                       rejecter:(RCTPromiseRejectBlock)reject;

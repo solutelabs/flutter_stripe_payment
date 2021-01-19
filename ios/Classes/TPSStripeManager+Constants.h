@@ -9,6 +9,7 @@ TPSStripeBridgeTypeDefine(createPaymentMethod);
 TPSStripeBridgeKeyDeclare(createPaymentMethod, id);
 TPSStripeBridgeKeyDeclare(createPaymentMethod, billingDetails);
 TPSStripeBridgeKeyDeclare(createPaymentMethod, card);
+TPSStripeBridgeKeyDeclare(createPaymentMethod, BECSInfo);
 //TPSStripeBridgeKeyDeclare(createPaymentMethod, iDEAL);
 TPSStripeBridgeKeyDeclare(createPaymentMethod, metadata);
 TPSStripeBridgeKeyDeclare(createPaymentMethod, customerId);
@@ -59,6 +60,12 @@ TPSStripeBridgeKeyDeclare(CardParams, addressState);
 TPSStripeBridgeKeyDeclare(CardParams, addressCountry);
 TPSStripeBridgeKeyDeclare(CardParams, addressZip);
 TPSStripeBridgeKeyDeclare(CardParams, token);
+
+TPSStripeBridgeTypeDefine(BECSParams);
+TPSStripeBridgeKeyDeclare(BECSParams, name);
+TPSStripeBridgeKeyDeclare(BECSParams, email);
+TPSStripeBridgeKeyDeclare(BECSParams, accountNumber);
+TPSStripeBridgeKeyDeclare(BECSParams, bsbNumber);
 
 TPSStripeBridgeTypeDefine(confirmPaymentIntent);
 TPSStripeBridgeKeyDeclare(confirmPaymentIntent, clientSecret);
