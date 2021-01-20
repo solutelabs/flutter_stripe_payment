@@ -367,6 +367,37 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
                             }];
 }
 
+-(void)createBECSPaymentMethod:(NSDictionary<NSString *, id> *)untypedParams
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject {
+    NSDictionary<TPSStripeType(createPaymentMethod), id> *params = untypedParams;
+
+    STPPaymentMethodParams * parsed = [self extractCreateBECSPaymentMethodParamsFromDictionary:params];
+    NSParameterAssert(parsed);
+
+    if(!requestIsCompleted) {
+        NSDictionary *error = [errorCodes valueForKey:kErrorKeyBusy];
+        reject(error[kErrorKeyCode], error[kErrorKeyDescription], nil);
+        return;
+    }
+    requestIsCompleted = NO;
+    promiseResolver = resolve;
+    promiseRejector = reject;
+
+    STPAPIClient *api = self.newAPIClient;
+    [api createPaymentMethodWithParams:parsed
+                            completion:^(STPPaymentMethod * __nullable paymentMethod, NSError * __nullable error){
+                                self->requestIsCompleted = YES;
+
+                                if (error) {
+                                    NSDictionary *jsError = [self->errorCodes valueForKey:kErrorKeyApi];
+                                    [self rejectPromiseWithCode:jsError[kErrorKeyCode] message:error.localizedDescription];
+                                    return;
+                                }
+                                resolve([self convertPaymentMethod: paymentMethod]);
+                            }];
+}
+
 -(void)confirmPaymentIntent:(NSDictionary<NSString*, id>*)untypedParams
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject {

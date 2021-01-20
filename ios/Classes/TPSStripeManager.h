@@ -48,6 +48,10 @@ typedef void (^RCTPromiseRejectBlock)(NSString *code, NSString *message, NSError
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject;
 
+-(void)createBECSPaymentMethod:(NSDictionary<NSString *, id> *)untypedParams
+                  resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject;
+
 -(void)confirmPaymentIntent:(NSDictionary<NSString*, id>*)untypedParams
                    resolver:(RCTPromiseResolveBlock)resolve
                    rejecter:(RCTPromiseRejectBlock)reject;

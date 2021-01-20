@@ -161,6 +161,13 @@ class StripePayment {
     return PaymentMethod.fromJson(paymentMethod);
   }
 
+  static Future<PaymentMethod> createBECSPaymentMethod(
+      PaymentMethodRequestBECS request) async {
+    final paymentMethod = await _channel.invokeMethod(
+        "createBECSPaymentMethod", request.toJson());
+    return PaymentMethod.fromJson(paymentMethod);
+  }
+
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
   static Future<PaymentIntentResult> authenticatePaymentIntent(
       {@required String clientSecret}) async {

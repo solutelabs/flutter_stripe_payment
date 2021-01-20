@@ -40,6 +40,8 @@
         [stripeModule potentiallyAvailableNativePayNetworks:result rejecter:rejecter];
     } else if ([@"createPaymentMethod" isEqualToString:call.method]) {
         [stripeModule createPaymentMethod:call.arguments resolver:result rejecter:rejecter];
+    } else if ([@"createBECSPaymentMethod" isEqualToString:call.method]) {
+        [stripeModule createBECSPaymentMethod:call.arguments resolver:result rejecter:rejecter];
     } else if ([@"confirmPaymentIntent" isEqualToString:call.method]) {
         [stripeModule confirmPaymentIntent:call.arguments resolver:result rejecter:rejecter];
     } else if ([@"authenticatePaymentIntent" isEqualToString:call.method]) {
