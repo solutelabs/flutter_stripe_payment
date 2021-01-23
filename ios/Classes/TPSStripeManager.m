@@ -1081,6 +1081,24 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
 }
 
 - (STPPaymentMethodParams*)extractCreateBECSPaymentMethodParamsFromDictionary:(NSDictionary<TPSStripeType(createPaymentMethod), id>*)params {
+    NSDictionary * becsInfo = params[@"BECSInfo"];
+    NSString * name = becsInfo[@"name"];
+    NSString * email = becsInfo[@"email"];
+    NSString * accountNumber = becsInfo[@"accountNumber"];
+    NSString * bsbNumber = becsInfo[@"bsbNumber"];
+    
+    STPPaymentMethodAUBECSDebitParams * becs = [[STPPaymentMethodAUBECSDebitParams alloc] init];
+    becs.accountNumber = accountNumber;
+    becs.bsbNumber = bsbNumber;
+    
+    STPPaymentMethodBillingDetails * billing = [[STPPaymentMethodBillingDetails alloc] init];
+    billing.name = name;
+    billing.email = email;
+    
+    return [STPPaymentMethodParams paramsWithAUBECSDebit:becs billingDetails:billing metadata:NULL];
+    
+    
+    /*
     NSDictionary<TPSStripeType(BECSParams), id> * becsParamsInput = params[TPSStripeParam(createPaymentMethod, BECSInfo)];
     if (!becsParamsInput && NSNull.null != (id)becsParamsInput) {return nil;}
     
@@ -1093,6 +1111,7 @@ void initializeTPSPaymentNetworksWithConditionalMappings() {
     billing.email = params[TPSStripeParam(BECSParams, email)];
     
     return [STPPaymentMethodParams paramsWithAUBECSDebit:becs billingDetails:billing metadata:NULL];
+    */
 }
 
 - (STPPaymentIntentParams*)extractConfirmPaymentIntentParamsFromDictionary:(NSDictionary<TPSStripeType(confirmPaymentIntent), id> *)params {
