@@ -85,6 +85,7 @@ class PaymentMethodRequestBECS {
 class PaymentMethod {
   BillingDetails billingDetails;
   CreditCard card;
+  AUBECSAccount auBECSAccount;
   num created;
   String customerId;
   String id;
@@ -94,6 +95,7 @@ class PaymentMethod {
   PaymentMethod(
       {this.billingDetails,
       this.card,
+      this.auBECSAccount,
       this.created,
       this.customerId,
       this.id,
@@ -106,6 +108,9 @@ class PaymentMethod {
           ? BillingDetails.fromJson(json['billingDetails'])
           : null,
       card: json['card'] != null ? CreditCard.fromJson(json['card']) : null,
+      auBECSAccount: json['au_becs_debit'] != null
+          ? AUBECSAccount.fromJson(json['au_becs_debit'])
+          : null,
       created: json['created'],
       customerId: json['customerId'],
       id: json['id'],
@@ -127,6 +132,9 @@ class PaymentMethod {
     }
     if (this.card != null) {
       data['card'] = this.card.toJson();
+    }
+    if (this.auBECSAccount != null) {
+      data['au_becs_debit'] = this.auBECSAccount.toJson();
     }
     return data;
   }

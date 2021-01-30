@@ -5,13 +5,18 @@ class Token {
   bool livemode;
   String tokenId;
 
-  Token({this.bankAccount, this.card, this.created, this.livemode, this.tokenId});
+  Token(
+      {this.bankAccount, this.card, this.created, this.livemode, this.tokenId});
 
   factory Token.fromJson(Map<dynamic, dynamic> json) {
     return Token(
-      bankAccount: json['bankAccount'] != null ? BankAccount.fromJson(json['bankAccount']) : null,
+      bankAccount: json['bankAccount'] != null
+          ? BankAccount.fromJson(json['bankAccount'])
+          : null,
       card: json['card'] != null ? CreditCard.fromJson(json['card']) : null,
-      created: json['created'] is int ? (json['created'] as int).toDouble() : json['created'],
+      created: json['created'] is int
+          ? (json['created'] as int).toDouble()
+          : json['created'],
       livemode: json['livemode'],
       tokenId: json['tokenId'],
     );
@@ -70,8 +75,10 @@ class BankAccount {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.accountHolderName != null) data['accountHolderName'] = this.accountHolderName;
-    if (this.accountHolderType != null) data['accountHolderType'] = this.accountHolderType;
+    if (this.accountHolderName != null)
+      data['accountHolderName'] = this.accountHolderName;
+    if (this.accountHolderType != null)
+      data['accountHolderType'] = this.accountHolderType;
     if (this.accountNumber != null) data['accountNumber'] = this.accountNumber;
     if (this.bankName != null) data['bankName'] = this.bankName;
     if (this.countryCode != null) data['countryCode'] = this.countryCode;
@@ -79,6 +86,34 @@ class BankAccount {
     if (this.fingerprint != null) data['fingerprint'] = this.fingerprint;
     data['last4'] = this.last4;
     if (this.routingNumber != null) data['routingNumber'] = this.routingNumber;
+    return data;
+  }
+}
+
+class AUBECSAccount {
+  String bsbNumber;
+  String fingerprint;
+  String last4;
+
+  AUBECSAccount({
+    this.bsbNumber,
+    this.fingerprint,
+    this.last4,
+  });
+
+  factory AUBECSAccount.fromJson(Map<dynamic, dynamic> json) {
+    return AUBECSAccount(
+      bsbNumber: json['bsb_number'],
+      fingerprint: json['fingerprint'],
+      last4: json['last4'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.bsbNumber != null) data['bsb_number'] = this.bsbNumber;
+    if (this.fingerprint != null) data['fingerprint'] = this.fingerprint;
+    data['last4'] = this.last4;
     return data;
   }
 }
@@ -148,7 +183,8 @@ class CreditCard {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.addressCity != null) data['addressCity'] = this.addressCity;
-    if (this.addressCountry != null) data['addressCountry'] = this.addressCountry;
+    if (this.addressCountry != null)
+      data['addressCountry'] = this.addressCountry;
     data['addressLine1'] = this.addressLine1;
     data['addressLine2'] = this.addressLine2;
     if (this.addressState != null) data['addressState'] = this.addressState;
