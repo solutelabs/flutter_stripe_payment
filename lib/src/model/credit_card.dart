@@ -11,7 +11,7 @@ class CreditCard {
   String addressLine2;
   String addressState;
   String addressZip;
-  CreditCardBrand brand;
+  // CreditCardBrand brand;
   String cardId;
   String country;
   int expMonth;
@@ -30,7 +30,7 @@ class CreditCard {
     this.addressLine2,
     this.addressState,
     this.addressZip,
-    this.brand,
+    // this.brand,
     this.cardId,
     this.country,
     this.expMonth,
