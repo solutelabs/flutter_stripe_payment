@@ -396,6 +396,15 @@ public class StripeModule {
   }
 
   @ReactMethod
+  public void confirmBECSSetupIntent(final ReadableMap options, final Promise promise) {
+    attachSetupResultActivityListener(promise);
+
+    if (activity != null) {
+      mStripe.confirmSetupIntent(activity, extractConfirmBECSSetupIntentParams(options));
+    }
+  }
+
+  @ReactMethod
   public void authenticateSetupIntent(final ReadableMap options, final Promise promise) {
     attachSetupResultActivityListener(promise);
 
@@ -479,6 +488,29 @@ public class StripeModule {
       csip =
           ConfirmSetupIntentParams.create(
               extractPaymentMethodCreateParams(paymentMethod), clientSecret, returnURL);
+    } else if (paymentMethodId != null) {
+      csip = ConfirmSetupIntentParams.create(paymentMethodId, clientSecret, returnURL);
+    }
+
+    ArgCheck.nonNull(csip);
+    csip.withShouldUseStripeSdk(true);
+    return csip;
+  }
+
+  private ConfirmSetupIntentParams extractConfirmBECSSetupIntentParams(final ReadableMap options) {
+    ReadableMap paymentMethod = getMapOrNull(options, "paymentMethod");
+    String paymentMethodId = getStringOrNull(options, "paymentMethodId");
+    String returnURL = getStringOrNull(options, "returnURL");
+    String clientSecret = options.getString("clientSecret");
+    ConfirmSetupIntentParams csip = null;
+    if (returnURL == null) {
+      returnURL = "stripejs://use_stripe_sdk/return_url";
+    }
+
+    if (paymentMethod != null) {
+      csip =
+              ConfirmSetupIntentParams.create(
+                      extractBECSPaymentMethodCreateParams(paymentMethod), clientSecret, returnURL);
     } else if (paymentMethodId != null) {
       csip = ConfirmSetupIntentParams.create(paymentMethodId, clientSecret, returnURL);
     }
@@ -617,6 +649,28 @@ public class StripeModule {
     }
 
     return PaymentMethodCreateParams.create(card, billingDetails, metadata);
+  }
+
+  private PaymentMethodCreateParams extractBECSPaymentMethodCreateParams(final ReadableMap options) {
+    ReadableMap becsParams = getMapOrNull(options, "becs");
+
+    PaymentMethodCreateParams.AuBecsDebit becs = null;
+    PaymentMethod.BillingDetails billingDetails = null;
+
+    if (becsParams != null) {
+      billingDetails =
+              new PaymentMethod.BillingDetails.Builder()
+                      .setEmail(getStringOrNull(becsParams, "email"))
+                      .setName(getStringOrNull(becsParams, "name"))
+                      .build();
+
+      becs = new PaymentMethodCreateParams.AuBecsDebit(
+              getStringOrNull(becsParams, "bsbNumber"),
+              getStringOrNull(becsParams, "accountNumber")
+      );
+    }
+
+    return PaymentMethodCreateParams.create(becs, billingDetails, null);
   }
 
   private SourceParams extractSourceParams(final ReadableMap options) {

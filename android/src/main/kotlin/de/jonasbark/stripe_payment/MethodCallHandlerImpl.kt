@@ -76,6 +76,10 @@ class MethodCallHandlerImpl(
                     ReadableMap(call.arguments()),
                     Promise(result)
             )
+            "confirmBECSSetupIntent" -> stripeModule.confirmBECSSetupIntent(
+                    ReadableMap(call.arguments()),
+                    Promise(result)
+            )
         }
     }
 }

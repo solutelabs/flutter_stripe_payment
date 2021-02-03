@@ -48,6 +48,8 @@
         [stripeModule authenticatePaymentIntent:call.arguments resolver:result rejecter:rejecter];
     } else if ([@"confirmSetupIntent" isEqualToString:call.method]) {
         [stripeModule confirmSetupIntent:call.arguments resolver:result rejecter:rejecter];
+    } else if ([@"confirmBECSSetupIntent" isEqualToString:call.method]) {
+        [stripeModule confirmBECSSetupIntent:call.arguments resolver:result rejecter:rejecter];
     } else if ([@"authenticateSetupIntent" isEqualToString:call.method]) {
         [stripeModule authenticateSetupIntent:call.arguments resolver:result rejecter:rejecter];
     } else if ([@"completeApplePayRequest" isEqualToString:call.method]) {

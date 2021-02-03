@@ -276,4 +276,14 @@ class StripePayment {
     );
     return SetupIntentResult.fromJson(result);
   }
+
+  static Future<SetupIntentResult> confirmBECSSetupIntent(
+      PaymentIntent intent) async {
+    assert(intent.clientSecret != null);
+    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+      'confirmBECSSetupIntent',
+      intent.toJson(),
+    );
+    return SetupIntentResult.fromJson(result);
+  }
 }

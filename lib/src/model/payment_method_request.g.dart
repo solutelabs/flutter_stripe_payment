@@ -14,6 +14,8 @@ PaymentMethodRequest _$PaymentMethodRequestFromJson(Map json) {
     card:
         json['card'] == null ? null : CreditCard.fromJson(json['card'] as Map),
     token: json['token'] == null ? null : Token.fromJson(json['token'] as Map),
+    becs:
+        json['becs'] == null ? null : BECSParams.fromJson(json['becs'] as Map),
     metadata: (json['metadata'] as Map)?.map(
       (k, e) => MapEntry(k as String, e as String),
     ),
@@ -33,6 +35,7 @@ Map<String, dynamic> _$PaymentMethodRequestToJson(
   writeNotNull('billingAddress', instance.billingAddress?.toJson());
   writeNotNull('card', instance.card?.toJson());
   writeNotNull('token', instance.token?.toJson());
+  writeNotNull('becs', instance.becs?.toJson());
   writeNotNull('metadata', instance.metadata);
   return val;
 }
