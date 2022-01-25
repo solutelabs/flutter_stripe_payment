@@ -4,8 +4,8 @@ version: 1.0.9
 homepage: https://github.com/jonasbark/flutter_stripe_payment
 
 dependencies:
-  build_runner: ^1.0.0
-  json_annotation:  ^3.0.1
+  build_runner: ^2.1.7
+  json_annotation:  ^4.4.0
   flutter:
     sdk: flutter
 
@@ -19,10 +19,11 @@ flutter:
         pluginClass: StripePaymentPlugin
 
 dev_dependencies:
-  json_serializable: ^3.3.0
+  json_serializable: ^6.1.4
   flutter_test:
     sdk: flutter
-  integration_test: ^1.0.1
+  integration_test: ^0.8.0
+  http: ^0.13.4
   flutter_driver:
     sdk: flutter
 
