@@ -8,28 +8,28 @@ part 'android_pay_payment_request.g.dart';
 @JsonSerializable()
 class AndroidPayPaymentRequest {
   @JsonKey(name: 'billing_address_required')
-  final bool billingAddressRequired;
+  final bool? billingAddressRequired;
 
   @JsonKey(name: 'currency_code')
-  final String currencyCode;
+  final String? currencyCode;
 
   @JsonKey(name: 'line_items')
-  final List<LineItem> lineItems;
+  final List<LineItem?>? lineItems;
 
   @JsonKey(name: 'shipping_address_required')
-  final bool shippingAddressRequired;
+  final bool? shippingAddressRequired;
 
   @JsonKey(name: 'shipping_countries')
-  final List<String> shippingCountries;
+  final List<String>? shippingCountries;
 
   @JsonKey(name: 'phone_number_required')
-  final bool phoneNumberRequired;
+  final bool? phoneNumberRequired;
 
   @JsonKey(name: 'email_required')
-  final bool emailRequired;
+  final bool? emailRequired;
 
   @JsonKey(name: 'total_price')
-  final String totalPrice;
+  final String? totalPrice;
 
   const AndroidPayPaymentRequest({
     this.billingAddressRequired,

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -40,7 +41,7 @@ class StripePayment {
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/usage.html
-  static Future<bool> deviceSupportsNativePay() async {
+  static Future<bool?> deviceSupportsNativePay() async {
     if (kIsWeb) {
       return false;
     } else {
@@ -56,7 +57,7 @@ class StripePayment {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/canmakeapplepaypaymentsoptions.html
   /// https://tipsi.github.io/tipsi-stripe/docs/canmakeandroidpaypayments.html
-  static Future<bool> canMakeNativePayPayments(List<String> networks) async {
+  static Future<bool?> canMakeNativePayPayments(List<String> networks) async {
     if (kIsWeb) {
       throw UnimplementedError();
     } else {
@@ -71,23 +72,23 @@ class StripePayment {
     }
   }
 
-  static Future<List<String>> potentiallyAvailableNativePayNetworks() async {
+  static Future<List<String>?> potentiallyAvailableNativePayNetworks() async {
     return await _channel.invokeListMethod<String>(
       "potentiallyAvailableNativePayNetworks",
     );
   }
 
-  static Future<bool> _deviceSupportsAndroidPay() {
+  static Future<bool?> _deviceSupportsAndroidPay() {
     return _channel.invokeMethod<bool>("deviceSupportsAndroidPay");
   }
 
-  static Future<bool> _deviceSupportsApplePay() {
+  static Future<bool?> _deviceSupportsApplePay() {
     return _channel.invokeMethod<bool>("deviceSupportsApplePay");
   }
 
   static Future<PaymentMethod> paymentMethodFromNativePay({
-    @required AndroidPayPaymentRequest androidPayOptions,
-    @required ApplePayPaymentOptions applePayOptions,
+    required AndroidPayPaymentRequest androidPayOptions,
+    required ApplePayPaymentOptions applePayOptions,
   }) {
     if (kIsWeb) {
       throw UnimplementedError();
@@ -103,28 +104,28 @@ class StripePayment {
 
   static Future<PaymentMethod> _paymentMethodFromAndroidPay(
       AndroidPayPaymentRequest options) async {
-    final pm = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final pm = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentMethodFromAndroidPay",
       options.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return PaymentMethod.fromJson(pm);
   }
 
   static Future<PaymentMethod> _paymentMethodFromApplePay(
       ApplePayPaymentOptions options) async {
-    final pm = await _channel
+    final pm = await (_channel
         .invokeMapMethod<dynamic, dynamic>("paymentMethodFromApplePay", {
       "options": options.toJson(),
-      "items": options.items.map((item) => item.toJson()).toList()
-    });
+      "items": options.items!.map((item) => item.toJson()).toList()
+    }) as FutureOr<Map<dynamic, dynamic>>);
     print('received: $pm');
     return PaymentMethod.fromJson(pm);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/paymentRequestWithNativePay.html
   static Future<Token> paymentRequestWithNativePay({
-    @required AndroidPayPaymentRequest androidPayOptions,
-    @required ApplePayPaymentOptions applePayOptions,
+    required AndroidPayPaymentRequest androidPayOptions,
+    required ApplePayPaymentOptions applePayOptions,
   }) {
     if (kIsWeb) {
       throw UnimplementedError();
@@ -140,20 +141,20 @@ class StripePayment {
 
   static Future<Token> _paymentRequestWithAndroidPay(
       AndroidPayPaymentRequest options) async {
-    final token = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentRequestWithAndroidPay",
       options.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return Token.fromJson(token);
   }
 
   static Future<Token> _paymentRequestWithApplePay(
       ApplePayPaymentOptions options) async {
-    final token = await _channel
+    final token = await (_channel
         .invokeMapMethod<dynamic, dynamic>("paymentRequestWithApplePay", {
       "options": options.toJson(),
-      "items": options.items.map((item) => item.toJson()).toList()
-    });
+      "items": options.items!.map((item) => item.toJson()).toList()
+    }) as FutureOr<Map<dynamic, dynamic>>);
     return Token.fromJson(token);
   }
 
@@ -188,58 +189,58 @@ class StripePayment {
   /// https://tipsi.github.io/tipsi-stripe/docs/paymentRequestWithCardForm.html
   static Future<PaymentMethod> paymentRequestWithCardForm(
       CardFormPaymentRequest options) async {
-    final token = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentRequestWithCardForm",
       options.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return PaymentMethod.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createTokenWithCard.html
   static Future<Token> createTokenWithCard(CreditCard card) async {
-    final token = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createTokenWithCard",
       card.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return Token.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createTokenWithBankAccount.html
   static Future<Token> createTokenWithBankAccount(BankAccount options) async {
-    final token = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createTokenWithBankAccount",
       options.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return Token.fromJson(token);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createsourcewithparamsparams.html
   static Future<Source> createSourceWithParams(SourceParams options) async {
-    final source = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final source = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createSourceWithParams",
       options.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return Source.fromJson(source);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/createPaymentMethod.html
   static Future<PaymentMethod> createPaymentMethod(
       PaymentMethodRequest request) async {
-    final paymentMethod = await _channel.invokeMapMethod<String, dynamic>(
+    final paymentMethod = await (_channel.invokeMapMethod<String, dynamic>(
       "createPaymentMethod",
       request.toJson(),
-    );
+    ) as FutureOr<Map<String, dynamic>>);
     return PaymentMethod.fromJson(paymentMethod);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
   static Future<PaymentIntentResult> authenticatePaymentIntent(
-      {@required String clientSecret}) async {
+      {required String clientSecret}) async {
     assert(clientSecret != null);
-    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'authenticatePaymentIntent',
       {"clientSecret": clientSecret},
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return PaymentIntentResult.fromJson(result);
   }
 
@@ -248,21 +249,21 @@ class StripePayment {
       PaymentIntent intent) async {
     assert(intent.clientSecret != null);
     // assert(intent.paymentMethodId != null);
-    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmPaymentIntent',
       intent.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return PaymentIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticateSetupIntent.html
   static Future<SetupIntentResult> authenticateSetupIntent(
-      {@required String clientSecret}) async {
+      {required String clientSecret}) async {
     assert(clientSecret != null);
-    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'authenticateSetupIntent',
       {"clientSecret": clientSecret},
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return SetupIntentResult.fromJson(result);
   }
 
@@ -270,20 +271,20 @@ class StripePayment {
   static Future<SetupIntentResult> confirmSetupIntent(
       PaymentIntent intent) async {
     assert(intent.clientSecret != null);
-    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmSetupIntent',
       intent.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return SetupIntentResult.fromJson(result);
   }
 
   static Future<SetupIntentResult> confirmBECSSetupIntent(
       PaymentIntent intent) async {
     assert(intent.clientSecret != null);
-    final result = await _channel.invokeMapMethod<dynamic, dynamic>(
+    final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmBECSSetupIntent',
       intent.toJson(),
-    );
+    ) as FutureOr<Map<dynamic, dynamic>>);
     return SetupIntentResult.fromJson(result);
   }
 }
