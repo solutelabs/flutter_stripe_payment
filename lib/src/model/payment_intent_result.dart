@@ -4,9 +4,9 @@ part 'payment_intent_result.g.dart';
 
 @JsonSerializable()
 class PaymentIntentResult {
-  final String status;
-  final String paymentIntentId;
-  final String paymentMethodId;
+  final String? status;
+  final String? paymentIntentId;
+  final String? paymentMethodId;
 
   const PaymentIntentResult({
     this.status,

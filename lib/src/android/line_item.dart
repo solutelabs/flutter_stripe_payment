@@ -5,19 +5,19 @@ part 'line_item.g.dart';
 @JsonSerializable()
 class LineItem {
   @JsonKey(name: 'currency_code')
-  final String currencyCode;
+  final String? currencyCode;
 
   @JsonKey(name: 'description')
-  final String description;
+  final String? description;
 
   @JsonKey(name: 'quantity')
-  final String quantity;
+  final String? quantity;
 
   @JsonKey(name: 'total_price')
-  final String totalPrice;
+  final String? totalPrice;
 
   @JsonKey(name: 'unit_price')
-  final String unitPrice;
+  final String? unitPrice;
 
   const LineItem({
     this.currencyCode,

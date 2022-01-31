@@ -6,20 +6,18 @@ part of 'contact_details.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ContactDetails _$ContactDetailsFromJson(Map json) {
-  return ContactDetails(
-    name: json['name'] as String,
-    phoneNumber: json['phoneNumber'] as String,
-    emailAddress: json['emailAddress'] as String,
-    supplementarySubLocality: json['supplementarySubLocality'] as String,
-    street: json['street'] as String,
-    city: json['city'] as String,
-    state: json['state'] as String,
-    country: json['country'] as String,
-    isoCountryCode: json['ISOCountryCode'] as String,
-    postalCode: json['postalCode'] as String,
-  );
-}
+ContactDetails _$ContactDetailsFromJson(Map json) => ContactDetails(
+      name: json['name'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      emailAddress: json['emailAddress'] as String?,
+      supplementarySubLocality: json['supplementarySubLocality'] as String?,
+      street: json['street'] as String?,
+      city: json['city'] as String?,
+      state: json['state'] as String?,
+      country: json['country'] as String?,
+      isoCountryCode: json['ISOCountryCode'] as String?,
+      postalCode: json['postalCode'] as String?,
+    );
 
 Map<String, dynamic> _$ContactDetailsToJson(ContactDetails instance) {
   final val = <String, dynamic>{};

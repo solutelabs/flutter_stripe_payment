@@ -5,23 +5,23 @@ part 'credit_card.g.dart';
 
 @JsonSerializable()
 class CreditCard {
-  String addressCity;
-  String addressCountry;
-  String addressLine1;
-  String addressLine2;
-  String addressState;
-  String addressZip;
+  String? addressCity;
+  String? addressCountry;
+  String? addressLine1;
+  String? addressLine2;
+  String? addressState;
+  String? addressZip;
   // CreditCardBrand brand;
-  String cardId;
-  String country;
-  int expMonth;
-  int expYear;
-  String funding;
-  String last4;
-  String name;
-  String number;
-  String cvc;
-  String token;
+  String? cardId;
+  String? country;
+  int? expMonth;
+  int? expYear;
+  String? funding;
+  String? last4;
+  String? name;
+  String? number;
+  String? cvc;
+  String? token;
 
   CreditCard({
     this.addressCity,

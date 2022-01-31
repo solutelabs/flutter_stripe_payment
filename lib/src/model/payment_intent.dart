@@ -7,17 +7,17 @@ part 'payment_intent.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PaymentIntent {
-  PaymentMethodRequest paymentMethod;
-  String paymentMethodId;
-  String returnURL;
-  String clientSecret;
-  final Map<String, dynamic> metadata;
+  PaymentMethodRequest? paymentMethod;
+  String? paymentMethodId;
+  String? returnURL;
+  String? clientSecret;
+  final Map<String, dynamic>? metadata;
 
   PaymentIntent({
     this.paymentMethod,
     this.paymentMethodId,
     this.returnURL,
-    @required this.clientSecret,
+    required this.clientSecret,
     this.metadata,
   });
 

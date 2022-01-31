@@ -6,22 +6,20 @@ part of 'owner.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Owner _$OwnerFromJson(Map json) {
-  return Owner(
-    address: json['address'] == null
-        ? null
-        : Address.fromJson(json['address'] as Map),
-    email: json['email'] as String,
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-    verifiedAddress: json['verifiedAddress'] == null
-        ? null
-        : Address.fromJson(json['verifiedAddress'] as Map),
-    verifiedEmail: json['verifiedEmail'] as String,
-    verifiedName: json['verifiedName'] as String,
-    verifiedPhone: json['verifiedPhone'] as String,
-  );
-}
+Owner _$OwnerFromJson(Map json) => Owner(
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map),
+      email: json['email'] as String?,
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+      verifiedAddress: json['verifiedAddress'] == null
+          ? null
+          : Address.fromJson(json['verifiedAddress'] as Map),
+      verifiedEmail: json['verifiedEmail'] as String?,
+      verifiedName: json['verifiedName'] as String?,
+      verifiedPhone: json['verifiedPhone'] as String?,
+    );
 
 Map<String, dynamic> _$OwnerToJson(Owner instance) {
   final val = <String, dynamic>{};

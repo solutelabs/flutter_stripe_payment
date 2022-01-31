@@ -10,11 +10,11 @@ part 'payment_method_request.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class PaymentMethodRequest {
-  final Address billingAddress;
-  final CreditCard card;
-  final Token token;
-  final BECSParams becs;
-  final Map<String, String> metadata;
+  final Address? billingAddress;
+  final CreditCard? card;
+  final Token? token;
+  final BECSParams? becs;
+  final Map<String, String>? metadata;
 
   const PaymentMethodRequest({
     this.billingAddress,

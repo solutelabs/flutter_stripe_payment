@@ -6,15 +6,14 @@ part of 'card_form_payment_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CardFormPaymentRequest _$CardFormPaymentRequestFromJson(Map json) {
-  return CardFormPaymentRequest(
-    prefilledInformation: json['prefilledInformation'] == null
-        ? null
-        : PrefilledInformation.fromJson(json['prefilledInformation'] as Map),
-    requiredBillingAddressFields:
-        json['requiredBillingAddressFields'] as String,
-  );
-}
+CardFormPaymentRequest _$CardFormPaymentRequestFromJson(Map json) =>
+    CardFormPaymentRequest(
+      prefilledInformation: json['prefilledInformation'] == null
+          ? null
+          : PrefilledInformation.fromJson(json['prefilledInformation'] as Map),
+      requiredBillingAddressFields:
+          json['requiredBillingAddressFields'] as String?,
+    );
 
 Map<String, dynamic> _$CardFormPaymentRequestToJson(
     CardFormPaymentRequest instance) {

@@ -32,23 +32,23 @@ enum SourceUsage {
 
 @JsonSerializable()
 class Source {
-  final String object;
-  final Receiver receiver;
-  final AchCreditTransfer achCreditTransfer;
-  final num amount;
-  final String clientSecret;
-  final CodeVerification codeVerification;
-  final num created;
-  final String currency;
-  final SourceFlow flow;
-  final String sourceId;
-  final bool livemode;
-  final Map<dynamic, dynamic> metadata;
-  final Owner owner;
-  final String statementDescriptor;
-  final SourceStatus status;
-  final String type;
-  final SourceUsage usage;
+  final String? object;
+  final Receiver? receiver;
+  final AchCreditTransfer? achCreditTransfer;
+  final num? amount;
+  final String? clientSecret;
+  final CodeVerification? codeVerification;
+  final num? created;
+  final String? currency;
+  final SourceFlow? flow;
+  final String? sourceId;
+  final bool? livemode;
+  final Map<dynamic, dynamic>? metadata;
+  final Owner? owner;
+  final String? statementDescriptor;
+  final SourceStatus? status;
+  final String? type;
+  final SourceUsage? usage;
 
   const Source({
     this.object,

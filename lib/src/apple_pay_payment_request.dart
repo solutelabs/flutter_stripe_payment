@@ -10,13 +10,13 @@ enum ShippingType { shipping, delivery, store_pickup, service_pickup }
 
 @JsonSerializable(createFactory: false)
 class ApplePayPaymentOptions {
-  final List<RequiredBillingAddressFields> requiredBillingAddressFields;
-  final List<RequiredShippingAddressFields> requiredShippingAddressFields;
-  final List<ShippingMethod> shippingMethod;
-  final String currencyCode;
-  final String countryCode;
-  final ShippingType shippingType;
-  final List<ApplePayItem> items;
+  final List<RequiredBillingAddressFields>? requiredBillingAddressFields;
+  final List<RequiredShippingAddressFields>? requiredShippingAddressFields;
+  final List<ShippingMethod>? shippingMethod;
+  final String? currencyCode;
+  final String? countryCode;
+  final ShippingType? shippingType;
+  final List<ApplePayItem>? items;
 
   const ApplePayPaymentOptions({
     this.requiredBillingAddressFields,
@@ -33,10 +33,10 @@ class ApplePayPaymentOptions {
 
 @JsonSerializable()
 class ShippingMethod {
-  final String amount;
-  final String detail;
-  final String id;
-  final String label;
+  final String? amount;
+  final String? detail;
+  final String? id;
+  final String? label;
 
   const ShippingMethod({
     this.amount,
@@ -51,9 +51,9 @@ class ShippingMethod {
 
 @JsonSerializable(createFactory: false)
 class ApplePayItem {
-  final String label;
-  final String amount;
-  final String type;
+  final String? label;
+  final String? amount;
+  final String? type;
 
   const ApplePayItem({
     this.label,

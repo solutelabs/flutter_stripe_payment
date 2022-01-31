@@ -6,21 +6,19 @@ part of 'customer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Customer _$CustomerFromJson(Map json) {
-  return Customer(
-    id: json['id'] as String,
-    address: json['address'] == null
-        ? null
-        : Address.fromJson(json['address'] as Map),
-    description: json['description'] as String,
-    email: json['email'] as String,
-    metadata: (json['metadata'] as Map)?.map(
-      (k, e) => MapEntry(k as String, e),
-    ),
-    name: json['name'] as String,
-    phone: json['phone'] as String,
-  );
-}
+Customer _$CustomerFromJson(Map json) => Customer(
+      id: json['id'] as String?,
+      address: json['address'] == null
+          ? null
+          : Address.fromJson(json['address'] as Map),
+      description: json['description'] as String?,
+      email: json['email'] as String?,
+      metadata: (json['metadata'] as Map?)?.map(
+        (k, e) => MapEntry(k as String, e),
+      ),
+      name: json['name'] as String?,
+      phone: json['phone'] as String?,
+    );
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) {
   final val = <String, dynamic>{};

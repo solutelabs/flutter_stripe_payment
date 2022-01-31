@@ -6,7 +6,7 @@ part 'prefilled_information.g.dart';
 
 @JsonSerializable()
 class PrefilledInformation {
-  final Address billingAddress;
+  final Address? billingAddress;
 
   const PrefilledInformation({
     this.billingAddress,

@@ -10,8 +10,8 @@ enum CodeVerificationStatus {
 
 @JsonSerializable()
 class CodeVerification {
-  final int attemptsRemaining;
-  final CodeVerificationStatus status;
+  final int? attemptsRemaining;
+  final CodeVerificationStatus? status;
 
   const CodeVerification({
     this.attemptsRemaining,

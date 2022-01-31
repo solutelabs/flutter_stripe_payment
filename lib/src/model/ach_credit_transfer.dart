@@ -4,11 +4,11 @@ part 'ach_credit_transfer.g.dart';
 
 @JsonSerializable()
 class AchCreditTransfer {
-  String accountNumber;
-  String bankName;
-  String fingerprint;
-  String routingNumber;
-  String swiftCode;
+  String? accountNumber;
+  String? bankName;
+  String? fingerprint;
+  String? routingNumber;
+  String? swiftCode;
 
   AchCreditTransfer({
     this.accountNumber,

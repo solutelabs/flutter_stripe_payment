@@ -7,21 +7,21 @@ part 'source_params.g.dart';
 
 @JsonSerializable()
 class SourceParams {
-  final int amount;
-  final String currency;
-  final String returnURL;
-  final String type;
-  final String name;
-  final String statementDescriptor;
-  final String country;
-  final String email;
-  final CreditCard card;
+  final int? amount;
+  final String? currency;
+  final String? returnURL;
+  final String? type;
+  final String? name;
+  final String? statementDescriptor;
+  final String? country;
+  final String? email;
+  final CreditCard? card;
 
   const SourceParams({
     this.amount,
     this.currency,
-    @required this.returnURL,
-    @required this.type,
+    required this.returnURL,
+    required this.type,
     this.name,
     this.statementDescriptor,
     this.country,

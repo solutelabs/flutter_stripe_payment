@@ -6,23 +6,22 @@ part of 'payment_method.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentMethod _$PaymentMethodFromJson(Map json) {
-  return PaymentMethod(
-    billingDetails: json['billingDetails'] == null
-        ? null
-        : BillingDetails.fromJson(json['billingDetails'] as Map),
-    card:
-        json['card'] == null ? null : CreditCard.fromJson(json['card'] as Map),
-    becs: json['au_becs_debit'] == null
-        ? null
-        : BECSMethod.fromJson(json['au_becs_debit'] as Map),
-    created: json['created'] as num,
-    customerId: json['customerId'] as String,
-    id: json['id'] as String,
-    livemode: json['livemode'] as bool,
-    type: json['type'] as String,
-  );
-}
+PaymentMethod _$PaymentMethodFromJson(Map json) => PaymentMethod(
+      billingDetails: json['billingDetails'] == null
+          ? null
+          : BillingDetails.fromJson(json['billingDetails'] as Map),
+      card: json['card'] == null
+          ? null
+          : CreditCard.fromJson(json['card'] as Map),
+      becs: json['au_becs_debit'] == null
+          ? null
+          : BECSMethod.fromJson(json['au_becs_debit'] as Map),
+      created: json['created'] as num?,
+      customerId: json['customerId'] as String?,
+      id: json['id'] as String?,
+      livemode: json['livemode'] as bool?,
+      type: json['type'] as String?,
+    );
 
 Map<String, dynamic> _$PaymentMethodToJson(PaymentMethod instance) {
   final val = <String, dynamic>{};

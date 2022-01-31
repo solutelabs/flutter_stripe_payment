@@ -6,21 +6,20 @@ part of 'token.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Token _$TokenFromJson(Map json) {
-  return Token(
-    bankAccount: json['bankAccount'] == null
-        ? null
-        : BankAccount.fromJson(json['bankAccount'] as Map),
-    card:
-        json['card'] == null ? null : CreditCard.fromJson(json['card'] as Map),
-    created: (json['created'] as num)?.toDouble(),
-    livemode: json['livemode'] as bool,
-    tokenId: json['tokenId'] as String,
-    extra: json['extra'] == null
-        ? null
-        : TokenExtra.fromJson(json['extra'] as Map),
-  );
-}
+Token _$TokenFromJson(Map json) => Token(
+      bankAccount: json['bankAccount'] == null
+          ? null
+          : BankAccount.fromJson(json['bankAccount'] as Map),
+      card: json['card'] == null
+          ? null
+          : CreditCard.fromJson(json['card'] as Map),
+      created: (json['created'] as num?)?.toDouble(),
+      livemode: json['livemode'] as bool?,
+      tokenId: json['tokenId'] as String?,
+      extra: json['extra'] == null
+          ? null
+          : TokenExtra.fromJson(json['extra'] as Map),
+    );
 
 Map<String, dynamic> _$TokenToJson(Token instance) {
   final val = <String, dynamic>{};
@@ -40,16 +39,14 @@ Map<String, dynamic> _$TokenToJson(Token instance) {
   return val;
 }
 
-TokenExtra _$TokenExtraFromJson(Map json) {
-  return TokenExtra(
-    json['billingContact'] == null
-        ? null
-        : ContactDetails.fromJson(json['billingContact'] as Map),
-    json['shippingContact'] == null
-        ? null
-        : ContactDetails.fromJson(json['shippingContact'] as Map),
-  );
-}
+TokenExtra _$TokenExtraFromJson(Map json) => TokenExtra(
+      json['billingContact'] == null
+          ? null
+          : ContactDetails.fromJson(json['billingContact'] as Map),
+      json['shippingContact'] == null
+          ? null
+          : ContactDetails.fromJson(json['shippingContact'] as Map),
+    );
 
 Map<String, dynamic> _$TokenExtraToJson(TokenExtra instance) {
   final val = <String, dynamic>{};

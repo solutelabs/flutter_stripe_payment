@@ -6,26 +6,24 @@ part of 'credit_card.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CreditCard _$CreditCardFromJson(Map json) {
-  return CreditCard(
-    addressCity: json['addressCity'] as String,
-    addressCountry: json['addressCountry'] as String,
-    addressLine1: json['addressLine1'] as String,
-    addressLine2: json['addressLine2'] as String,
-    addressState: json['addressState'] as String,
-    addressZip: json['addressZip'] as String,
-    cardId: json['cardId'] as String,
-    country: json['country'] as String,
-    expMonth: json['expMonth'] as int,
-    expYear: json['expYear'] as int,
-    number: json['number'] as String,
-    token: json['token'] as String,
-    cvc: json['cvc'] as String,
-    funding: json['funding'] as String,
-    last4: json['last4'] as String,
-    name: json['name'] as String,
-  );
-}
+CreditCard _$CreditCardFromJson(Map json) => CreditCard(
+      addressCity: json['addressCity'] as String?,
+      addressCountry: json['addressCountry'] as String?,
+      addressLine1: json['addressLine1'] as String?,
+      addressLine2: json['addressLine2'] as String?,
+      addressState: json['addressState'] as String?,
+      addressZip: json['addressZip'] as String?,
+      cardId: json['cardId'] as String?,
+      country: json['country'] as String?,
+      expMonth: json['expMonth'] as int?,
+      expYear: json['expYear'] as int?,
+      number: json['number'] as String?,
+      token: json['token'] as String?,
+      cvc: json['cvc'] as String?,
+      funding: json['funding'] as String?,
+      last4: json['last4'] as String?,
+      name: json['name'] as String?,
+    );
 
 Map<String, dynamic> _$CreditCardToJson(CreditCard instance) {
   final val = <String, dynamic>{};

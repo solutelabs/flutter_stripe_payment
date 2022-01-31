@@ -6,14 +6,13 @@ part of 'credit_card_brand.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CreditCardBrand _$CreditCardBrandFromJson(Map json) {
-  return CreditCardBrand(
-    code: json['code'] as String,
-    maxCvcLength: json['maxCvcLength'] as int,
-    displayName: json['displayName'] as String,
-    cvcLength: (json['cvcLength'] as List)?.map((e) => e as int)?.toList(),
-  );
-}
+CreditCardBrand _$CreditCardBrandFromJson(Map json) => CreditCardBrand(
+      code: json['code'] as String?,
+      maxCvcLength: json['maxCvcLength'] as int?,
+      displayName: json['displayName'] as String?,
+      cvcLength:
+          (json['cvcLength'] as List<dynamic>?)?.map((e) => e as int).toList(),
+    );
 
 Map<String, dynamic> _$CreditCardBrandToJson(CreditCardBrand instance) {
   final val = <String, dynamic>{};

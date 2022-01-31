@@ -8,17 +8,17 @@ part 'payment_method.g.dart';
 
 @JsonSerializable(anyMap: true)
 class PaymentMethod {
-  BillingDetails billingDetails;
-  CreditCard card;
+  BillingDetails? billingDetails;
+  CreditCard? card;
 
   @JsonKey(name: 'au_becs_debit')
-  BECSMethod becs;
+  BECSMethod? becs;
 
-  num created;
-  String customerId;
-  String id;
-  bool livemode;
-  String type;
+  num? created;
+  String? customerId;
+  String? id;
+  bool? livemode;
+  String? type;
 
   PaymentMethod({
     this.billingDetails,

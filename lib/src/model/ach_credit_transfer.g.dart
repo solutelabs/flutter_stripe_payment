@@ -6,15 +6,13 @@ part of 'ach_credit_transfer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AchCreditTransfer _$AchCreditTransferFromJson(Map json) {
-  return AchCreditTransfer(
-    accountNumber: json['accountNumber'] as String,
-    bankName: json['bankName'] as String,
-    fingerprint: json['fingerprint'] as String,
-    routingNumber: json['routingNumber'] as String,
-    swiftCode: json['swiftCode'] as String,
-  );
-}
+AchCreditTransfer _$AchCreditTransferFromJson(Map json) => AchCreditTransfer(
+      accountNumber: json['accountNumber'] as String?,
+      bankName: json['bankName'] as String?,
+      fingerprint: json['fingerprint'] as String?,
+      routingNumber: json['routingNumber'] as String?,
+      swiftCode: json['swiftCode'] as String?,
+    );
 
 Map<String, dynamic> _$AchCreditTransferToJson(AchCreditTransfer instance) {
   final val = <String, dynamic>{};

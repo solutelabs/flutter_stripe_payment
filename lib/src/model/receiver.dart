@@ -4,12 +4,12 @@ part 'receiver.g.dart';
 
 @JsonSerializable()
 class Receiver {
-  final String address;
-  final int amountCharged;
-  final int amountReceived;
-  final int amountReturned;
-  final String refundAttributesMethod;
-  final String refundAttributesStatus;
+  final String? address;
+  final int? amountCharged;
+  final int? amountReceived;
+  final int? amountReturned;
+  final String? refundAttributesMethod;
+  final String? refundAttributesStatus;
 
   const Receiver({
     this.address,

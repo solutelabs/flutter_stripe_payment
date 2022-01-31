@@ -6,19 +6,17 @@ part of 'payment_intent.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentIntent _$PaymentIntentFromJson(Map json) {
-  return PaymentIntent(
-    paymentMethod: json['paymentMethod'] == null
-        ? null
-        : PaymentMethodRequest.fromJson(json['paymentMethod'] as Map),
-    paymentMethodId: json['paymentMethodId'] as String,
-    returnURL: json['returnURL'] as String,
-    clientSecret: json['clientSecret'] as String,
-    metadata: (json['metadata'] as Map)?.map(
-      (k, e) => MapEntry(k as String, e),
-    ),
-  );
-}
+PaymentIntent _$PaymentIntentFromJson(Map json) => PaymentIntent(
+      paymentMethod: json['paymentMethod'] == null
+          ? null
+          : PaymentMethodRequest.fromJson(json['paymentMethod'] as Map),
+      paymentMethodId: json['paymentMethodId'] as String?,
+      returnURL: json['returnURL'] as String?,
+      clientSecret: json['clientSecret'] as String?,
+      metadata: (json['metadata'] as Map?)?.map(
+        (k, e) => MapEntry(k as String, e),
+      ),
+    );
 
 Map<String, dynamic> _$PaymentIntentToJson(PaymentIntent instance) {
   final val = <String, dynamic>{};

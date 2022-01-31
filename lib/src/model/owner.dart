@@ -6,14 +6,14 @@ part 'owner.g.dart';
 
 @JsonSerializable()
 class Owner {
-  final Address address;
-  final String email;
-  final String name;
-  final String phone;
-  final Address verifiedAddress;
-  final String verifiedEmail;
-  final String verifiedName;
-  final String verifiedPhone;
+  final Address? address;
+  final String? email;
+  final String? name;
+  final String? phone;
+  final Address? verifiedAddress;
+  final String? verifiedEmail;
+  final String? verifiedName;
+  final String? verifiedPhone;
 
   const Owner({
     this.address,

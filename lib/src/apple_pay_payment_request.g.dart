@@ -20,18 +20,18 @@ Map<String, dynamic> _$ApplePayPaymentOptionsToJson(
       'requiredBillingAddressFields',
       instance.requiredBillingAddressFields
           ?.map((e) => _$RequiredBillingAddressFieldsEnumMap[e])
-          ?.toList());
+          .toList());
   writeNotNull(
       'requiredShippingAddressFields',
       instance.requiredShippingAddressFields
           ?.map((e) => _$RequiredShippingAddressFieldsEnumMap[e])
-          ?.toList());
+          .toList());
   writeNotNull('shippingMethod',
-      instance.shippingMethod?.map((e) => e?.toJson())?.toList());
+      instance.shippingMethod?.map((e) => e.toJson()).toList());
   writeNotNull('currencyCode', instance.currencyCode);
   writeNotNull('countryCode', instance.countryCode);
   writeNotNull('shippingType', _$ShippingTypeEnumMap[instance.shippingType]);
-  writeNotNull('items', instance.items?.map((e) => e?.toJson())?.toList());
+  writeNotNull('items', instance.items?.map((e) => e.toJson()).toList());
   return val;
 }
 
@@ -58,14 +58,12 @@ const _$ShippingTypeEnumMap = {
   ShippingType.service_pickup: 'service_pickup',
 };
 
-ShippingMethod _$ShippingMethodFromJson(Map json) {
-  return ShippingMethod(
-    amount: json['amount'] as String,
-    detail: json['detail'] as String,
-    id: json['id'] as String,
-    label: json['label'] as String,
-  );
-}
+ShippingMethod _$ShippingMethodFromJson(Map json) => ShippingMethod(
+      amount: json['amount'] as String?,
+      detail: json['detail'] as String?,
+      id: json['id'] as String?,
+      label: json['label'] as String?,
+    );
 
 Map<String, dynamic> _$ShippingMethodToJson(ShippingMethod instance) {
   final val = <String, dynamic>{};

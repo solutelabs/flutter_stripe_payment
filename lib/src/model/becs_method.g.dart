@@ -6,13 +6,11 @@ part of 'becs_method.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BECSMethod _$BECSMethodFromJson(Map json) {
-  return BECSMethod(
-    bsbNumber: json['bsbNumber'] as String,
-    fingerprint: json['fingerprint'] as String,
-    last4: json['last4'] as String,
-  );
-}
+BECSMethod _$BECSMethodFromJson(Map json) => BECSMethod(
+      bsbNumber: json['bsbNumber'] as String?,
+      fingerprint: json['fingerprint'] as String?,
+      last4: json['last4'] as String?,
+    );
 
 Map<String, dynamic> _$BECSMethodToJson(BECSMethod instance) {
   final val = <String, dynamic>{};

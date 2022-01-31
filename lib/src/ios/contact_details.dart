@@ -4,17 +4,17 @@ part 'contact_details.g.dart';
 
 @JsonSerializable()
 class ContactDetails {
-  final String name;
-  final String phoneNumber;
-  final String emailAddress;
-  final String supplementarySubLocality;
-  final String street;
-  final String city;
-  final String state;
-  final String country;
+  final String? name;
+  final String? phoneNumber;
+  final String? emailAddress;
+  final String? supplementarySubLocality;
+  final String? street;
+  final String? city;
+  final String? state;
+  final String? country;
   @JsonKey(name: 'ISOCountryCode')
-  final String isoCountryCode;
-  final String postalCode;
+  final String? isoCountryCode;
+  final String? postalCode;
 
   const ContactDetails({
     this.name,

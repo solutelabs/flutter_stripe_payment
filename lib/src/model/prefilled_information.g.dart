@@ -6,13 +6,12 @@ part of 'prefilled_information.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PrefilledInformation _$PrefilledInformationFromJson(Map json) {
-  return PrefilledInformation(
-    billingAddress: json['billingAddress'] == null
-        ? null
-        : Address.fromJson(json['billingAddress'] as Map),
-  );
-}
+PrefilledInformation _$PrefilledInformationFromJson(Map json) =>
+    PrefilledInformation(
+      billingAddress: json['billingAddress'] == null
+          ? null
+          : Address.fromJson(json['billingAddress'] as Map),
+    );
 
 Map<String, dynamic> _$PrefilledInformationToJson(
     PrefilledInformation instance) {

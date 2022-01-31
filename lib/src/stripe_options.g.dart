@@ -6,13 +6,11 @@ part of 'stripe_options.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-StripeOptions _$StripeOptionsFromJson(Map json) {
-  return StripeOptions(
-    publishableKey: json['publishableKey'] as String,
-    merchantId: json['merchantId'] as String,
-    androidPayMode: json['androidPayMode'] as String,
-  );
-}
+StripeOptions _$StripeOptionsFromJson(Map json) => StripeOptions(
+      publishableKey: json['publishableKey'] as String?,
+      merchantId: json['merchantId'] as String?,
+      androidPayMode: json['androidPayMode'] as String?,
+    );
 
 Map<String, dynamic> _$StripeOptionsToJson(StripeOptions instance) {
   final val = <String, dynamic>{};

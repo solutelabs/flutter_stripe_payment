@@ -5,12 +5,12 @@ part 'stripe_options.g.dart';
 
 @JsonSerializable()
 class StripeOptions {
-  final String publishableKey;
-  final String merchantId;
-  final String androidPayMode;
+  final String? publishableKey;
+  final String? merchantId;
+  final String? androidPayMode;
 
   StripeOptions({
-    @required this.publishableKey,
+    required this.publishableKey,
     this.merchantId,
     this.androidPayMode,
   });

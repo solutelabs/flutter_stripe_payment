@@ -4,10 +4,10 @@ part 'becs_params.g.dart';
 
 @JsonSerializable(anyMap: true)
 class BECSParams {
-  final String name;
-  final String email;
-  final String accountNumber;
-  final String bsbNumber;
+  final String? name;
+  final String? email;
+  final String? accountNumber;
+  final String? bsbNumber;
 
   BECSParams({
     this.name,

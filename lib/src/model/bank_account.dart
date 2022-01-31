@@ -9,15 +9,15 @@ enum BankAccountAccountHolderType {
 
 @JsonSerializable()
 class BankAccount {
-  final String accountHolderName;
-  final BankAccountAccountHolderType accountHolderType;
-  final String accountNumber;
-  final String bankName;
-  final String countryCode;
-  final String currency;
-  final String fingerprint;
-  final String last4;
-  final String routingNumber;
+  final String? accountHolderName;
+  final BankAccountAccountHolderType? accountHolderType;
+  final String? accountNumber;
+  final String? bankName;
+  final String? countryCode;
+  final String? currency;
+  final String? fingerprint;
+  final String? last4;
+  final String? routingNumber;
 
   const BankAccount({
     this.accountHolderName,

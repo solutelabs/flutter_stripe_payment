@@ -6,21 +6,23 @@ part of 'payment_method_request.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-PaymentMethodRequest _$PaymentMethodRequestFromJson(Map json) {
-  return PaymentMethodRequest(
-    billingAddress: json['billingAddress'] == null
-        ? null
-        : Address.fromJson(json['billingAddress'] as Map),
-    card:
-        json['card'] == null ? null : CreditCard.fromJson(json['card'] as Map),
-    token: json['token'] == null ? null : Token.fromJson(json['token'] as Map),
-    becs:
-        json['becs'] == null ? null : BECSParams.fromJson(json['becs'] as Map),
-    metadata: (json['metadata'] as Map)?.map(
-      (k, e) => MapEntry(k as String, e as String),
-    ),
-  );
-}
+PaymentMethodRequest _$PaymentMethodRequestFromJson(Map json) =>
+    PaymentMethodRequest(
+      billingAddress: json['billingAddress'] == null
+          ? null
+          : Address.fromJson(json['billingAddress'] as Map),
+      card: json['card'] == null
+          ? null
+          : CreditCard.fromJson(json['card'] as Map),
+      token:
+          json['token'] == null ? null : Token.fromJson(json['token'] as Map),
+      becs: json['becs'] == null
+          ? null
+          : BECSParams.fromJson(json['becs'] as Map),
+      metadata: (json['metadata'] as Map?)?.map(
+        (k, e) => MapEntry(k as String, e as String),
+      ),
+    );
 
 Map<String, dynamic> _$PaymentMethodRequestToJson(
     PaymentMethodRequest instance) {

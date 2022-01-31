@@ -6,8 +6,8 @@ part 'card_form_payment_request.g.dart';
 
 @JsonSerializable()
 class CardFormPaymentRequest {
-  PrefilledInformation prefilledInformation;
-  String requiredBillingAddressFields;
+  PrefilledInformation? prefilledInformation;
+  String? requiredBillingAddressFields;
 
   CardFormPaymentRequest({
     this.prefilledInformation,

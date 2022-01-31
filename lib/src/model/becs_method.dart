@@ -4,9 +4,9 @@ part 'becs_method.g.dart';
 
 @JsonSerializable(anyMap: true)
 class BECSMethod {
-  String bsbNumber;
-  String fingerprint;
-  String last4;
+  String? bsbNumber;
+  String? fingerprint;
+  String? last4;
 
   BECSMethod({
     this.bsbNumber,

@@ -4,10 +4,10 @@ part 'credit_card_brand.g.dart';
 
 @JsonSerializable()
 class CreditCardBrand {
-  String code;
-  int maxCvcLength;
-  String displayName;
-  List<int> cvcLength;
+  String? code;
+  int? maxCvcLength;
+  String? displayName;
+  List<int>? cvcLength;
 
   CreditCardBrand({
     this.code,

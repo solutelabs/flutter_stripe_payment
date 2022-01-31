@@ -8,12 +8,12 @@ part 'token.g.dart';
 
 @JsonSerializable()
 class Token {
-  final BankAccount bankAccount;
-  final CreditCard card;
-  final double created;
-  final bool livemode;
-  final String tokenId;
-  final TokenExtra extra;
+  final BankAccount? bankAccount;
+  final CreditCard? card;
+  final double? created;
+  final bool? livemode;
+  final String? tokenId;
+  final TokenExtra? extra;
 
   Token({
     this.bankAccount,
@@ -30,8 +30,8 @@ class Token {
 
 @JsonSerializable()
 class TokenExtra {
-  final ContactDetails billingContact;
-  final ContactDetails shippingContact;
+  final ContactDetails? billingContact;
+  final ContactDetails? shippingContact;
 
   TokenExtra(this.billingContact, this.shippingContact);
 
