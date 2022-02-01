@@ -229,7 +229,7 @@ class StripePayment {
     final paymentMethod = await (_channel.invokeMapMethod<String, dynamic>(
       "createPaymentMethod",
       request.toJson(),
-    ) as Future<Map<String, dynamic>>?);
+    ) as Future<Map<String, dynamic>?>);
     return PaymentMethod.fromJson(paymentMethod!);
   }
 
