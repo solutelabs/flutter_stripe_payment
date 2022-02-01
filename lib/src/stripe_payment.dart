@@ -229,8 +229,8 @@ class StripePayment {
     final paymentMethod = await (_channel.invokeMapMethod<String, dynamic>(
       "createPaymentMethod",
       request.toJson(),
-    ) as FutureOr<Map<String, dynamic>>);
-    return PaymentMethod.fromJson(paymentMethod);
+    ) as Future<Map<String, dynamic>>?);
+    return PaymentMethod.fromJson(paymentMethod!);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
