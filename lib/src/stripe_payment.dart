@@ -107,7 +107,7 @@ class StripePayment {
     final pm = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentMethodFromAndroidPay",
       options.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return PaymentMethod.fromJson(pm!);
   }
 
@@ -117,7 +117,7 @@ class StripePayment {
         .invokeMapMethod<dynamic, dynamic>("paymentMethodFromApplePay", {
       "options": options.toJson(),
       "items": options.items!.map((item) => item.toJson()).toList()
-    }) as Future<Map<String, dynamic>?>);
+    }) as Future<Map<dynamic, dynamic>?>);
     print('received: $pm');
     return PaymentMethod.fromJson(pm!);
   }
@@ -144,7 +144,7 @@ class StripePayment {
     final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentRequestWithAndroidPay",
       options.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return Token.fromJson(token!);
   }
 
@@ -154,7 +154,7 @@ class StripePayment {
         .invokeMapMethod<dynamic, dynamic>("paymentRequestWithApplePay", {
       "options": options.toJson(),
       "items": options.items!.map((item) => item.toJson()).toList()
-    }) as Future<Map<String, dynamic>?>);
+    }) as Future<Map<dynamic, dynamic>?>);
     return Token.fromJson(token!);
   }
 
@@ -192,7 +192,7 @@ class StripePayment {
     final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "paymentRequestWithCardForm",
       options.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return PaymentMethod.fromJson(token!);
   }
 
@@ -201,7 +201,7 @@ class StripePayment {
     final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createTokenWithCard",
       card.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return Token.fromJson(token!);
   }
 
@@ -210,7 +210,7 @@ class StripePayment {
     final token = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createTokenWithBankAccount",
       options.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return Token.fromJson(token!);
   }
 
@@ -219,7 +219,7 @@ class StripePayment {
     final source = await (_channel.invokeMapMethod<dynamic, dynamic>(
       "createSourceWithParams",
       options.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return Source.fromJson(source!);
   }
 
@@ -240,7 +240,7 @@ class StripePayment {
     final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'authenticatePaymentIntent',
       {"clientSecret": clientSecret},
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return PaymentIntentResult.fromJson(result!);
   }
 
@@ -252,7 +252,7 @@ class StripePayment {
     final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmPaymentIntent',
       intent.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return PaymentIntentResult.fromJson(result!);
   }
 
@@ -263,7 +263,7 @@ class StripePayment {
     final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'authenticateSetupIntent',
       {"clientSecret": clientSecret},
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return SetupIntentResult.fromJson(result!);
   }
 
@@ -274,7 +274,7 @@ class StripePayment {
     final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmSetupIntent',
       intent.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return SetupIntentResult.fromJson(result!);
   }
 
@@ -284,7 +284,7 @@ class StripePayment {
     final result = await (_channel.invokeMapMethod<dynamic, dynamic>(
       'confirmBECSSetupIntent',
       intent.toJson(),
-    ) as Future<Map<String, dynamic>?>);
+    ) as Future<Map<dynamic, dynamic>?>);
     return SetupIntentResult.fromJson(result!);
   }
 }
