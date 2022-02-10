@@ -4,7 +4,7 @@ version: 1.0.9
 homepage: https://github.com/jonasbark/flutter_stripe_payment
 
 dependencies:
-  build_runner: ^2.1.7
+  build_runner:
   json_annotation:  ^4.4.0
   flutter:
     sdk: flutter
