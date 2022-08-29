@@ -101,7 +101,7 @@ class StripePaymentPlugin : FlutterPlugin, ActivityAware {
         stopListening()
     }
 
-    private fun startListening(applicationContext: Context, activity: Activity?, messenger: BinaryMessenger?, activityRegistry: ActivityRegistry) {
+    private fun startListening(applicationContext: Context, activity: Activity?, messenger: BinaryMessenger, activityRegistry: ActivityRegistry) {
         methodChannel = MethodChannel(messenger, "stripe_payment")
         methodChannel?.setMethodCallHandler(MethodCallHandlerImpl(
                 applicationContext,
